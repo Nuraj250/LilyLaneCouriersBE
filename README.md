@@ -28,6 +28,8 @@ To run your Spring Boot project with a MongoDB database locally, follow these st
 
 **Step 2: Configure MongoDB Connection**
 
+**MONGODB**
+
 1. In your Spring Boot project, open the `application.properties` file to configure the MongoDB
    connection.
 
