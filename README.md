@@ -1,4 +1,4 @@
-# LilyLaneCouriersBE
+# Lily Lane Couriers Service BackEnd Application
 
 Before running the application, make sure to set the active profile to .dev for development purposes.
 To run your Spring Boot project with a MongoDB database locally, follow these steps:
