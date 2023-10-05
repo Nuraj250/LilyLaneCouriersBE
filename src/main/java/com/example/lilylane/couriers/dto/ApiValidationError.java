@@ -1,9 +1,17 @@
 package com.example.lilylane.couriers.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * used to represent validation errors in an API response
+ */
+@Getter
+@Setter
 public class ApiValidationError implements Serializable {
     @Serial
     private static final long serialVersionUID = 1781211130961571205L;
@@ -12,11 +20,23 @@ public class ApiValidationError implements Serializable {
     private Object rejectedValue;
     private String message;
 
+    /**
+     * used to instantiate a new Api Validation error.
+     * @param object
+     * @param message
+     */
     ApiValidationError(String object, String message) {
         this.object = object;
         this.message = message;
     }
 
+    /**
+     * used to instantiate a new Api Validation error.
+     * @param object
+     * @param field
+     * @param rejectedValue
+     * @param message
+     */
     public ApiValidationError(String object, String field, Object rejectedValue, String message) {
         this.object = object;
         this.field = field;
@@ -24,38 +44,11 @@ public class ApiValidationError implements Serializable {
         this.message = message;
     }
 
-    public String getObject() {
-        return object;
-    }
-
-    public void setObject(String object) {
-        this.object = object;
-    }
-
-    public String getField() {
-        return field;
-    }
-
-    public void setField(String field) {
-        this.field = field;
-    }
-
-    public Object getRejectedValue() {
-        return rejectedValue;
-    }
-
-    public void setRejectedValue(Object rejectedValue) {
-        this.rejectedValue = rejectedValue;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
+    /**
+     * used to override the method to provide custom one based on the object, field, rejectedValue, and message fields.
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -68,6 +61,10 @@ public class ApiValidationError implements Serializable {
         return object.equals(that.object) && field.equals(that.field) && rejectedValue.equals(that.rejectedValue) && message.equals(that.message);
     }
 
+    /**
+     * used to overrides the hashCode method to provide a custom one based on the object, field, rejectedValue, and message fields
+     * @return
+     */
     @Override
     public int hashCode() {
         return Objects.hash(object, field, rejectedValue, message);

@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+
+/**
+ * used to represent a user entity in a database
+ */
 @Entity
 @Getter
 @Setter

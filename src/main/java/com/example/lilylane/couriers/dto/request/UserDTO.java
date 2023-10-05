@@ -7,6 +7,9 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
+/**
+ * This class  represent user-related data
+ */
 @Setter
 @Getter
 @ToString

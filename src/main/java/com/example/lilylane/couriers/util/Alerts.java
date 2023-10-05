@@ -1,5 +1,8 @@
 package com.example.lilylane.couriers.util;
 
+/**
+ * used for represent response message for function
+ */
 public interface Alerts {
     String saveSuccess = "Successfully saved!";
     String registerSuccess = "Successfully Registered!";

@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * The type Jwt token util.
+ * used for handling tasks like token generation, token validation, and extracting claims from JWTs
  */
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -34,7 +34,7 @@ public class JwtTokenUtil implements Serializable {
     private String secret;
 
     /**
-     * Retrieve username from jwt token
+     * used to retrieve username from jwt token
      *
      * @param token the token
      * @return the username from token
@@ -44,7 +44,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * Retrieve expiration date from jwt token
+     * used to retrieve expiration date from jwt token
      *
      * @param token the token
      * @return the expiration date from token
@@ -54,7 +54,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * Gets claim from token.
+     * used to gets claim from token.
      *
      * @param <T>            the type parameter
      * @param token          the token
@@ -67,7 +67,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * For retrieveing any information from token we will need the secret key
+     * used for retrieving any information from token we will need the secret key
      *
      * @param token the token
      * @return the JWT Parser
@@ -77,7 +77,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * For retrieveing any information from token we will need the secret key
+     * used for retrieving any information from token we will need the secret key
      *
      * @param token the token
      * @return the JWT Parser
@@ -88,7 +88,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * Generate token for user
+     * used to generate token for user
      *
      * @param userDetails the user details
      * @return the string
@@ -99,7 +99,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * Generate token for user
+     * used to generate token for user
      * while creating the token -
      * 1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID
      * 2. Sign the JWT using the HS512 algorithm and secret key.
@@ -117,7 +117,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * Validate token boolean.
+     * used to validate token boolean.
      *
      * @param token       the token
      * @param userDetails the user details

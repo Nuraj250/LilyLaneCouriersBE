@@ -1,19 +1,18 @@
 package com.example.lilylane.couriers.exceptions;
 
 /**
- * The type invalid argument exception.
- *
+ * used for the type invalid argument exception.
  */
 public class InvalidArgumentException extends RuntimeException {
     /**
-     * Instantiates a new Invalid argument exception.
+     * used for instantiates a new Invalid argument exception.
      */
     public InvalidArgumentException() {
         super();
     }
 
     /**
-     * Instantiates a new Invalid argument exception.
+     * used for instantiates a new Invalid argument exception.
      *
      * @param msg the msg
      */

@@ -15,7 +15,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * The type Jwt authentication entry point.
+ * used to  for handling authentication errors in a Spring Security configuration
  */
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
     @Serial
@@ -27,7 +27,15 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Se
         this.objectMapper = objectMapper;
     }
 
-
+    /**
+     * used when an unauthenticated user attempts to access a secured resource.
+     * It handles the authentication failure and sends an error response
+     *
+     * @param request
+     * @param response
+     * @param authException
+     * @throws IOException
+     */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException {

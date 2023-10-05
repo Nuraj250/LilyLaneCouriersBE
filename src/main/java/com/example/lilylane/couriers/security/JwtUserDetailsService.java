@@ -13,6 +13,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+
+/**
+ * used to load user details from database, when authentication is performed by Spring Security.
+ */
 @Component
 @AllArgsConstructor(onConstructor = @__({@Autowired}))
 @Slf4j
@@ -20,7 +24,13 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     private final UserServiceImpl userService;
 
-
+    /**
+     * used to retrieve user details based on the provided username.
+     *
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {

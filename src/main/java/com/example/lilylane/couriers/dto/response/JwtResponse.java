@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * This class  represent a response containing user information in the context of JSON Web Token (JWT)-based authentication
+ */
 @Data
 public class JwtResponse implements Serializable {
 

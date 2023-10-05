@@ -1,11 +1,11 @@
 package com.example.lilylane.couriers.exceptions;
 
 /**
- * The type Entity not found exception.
+ * used for the type Entity not found exception.
  */
 public class EntityNotFoundException extends RuntimeException {
     /**
-     * Instantiates a new Entity not found exception.
+     * used for instantiates a new Entity not found exception.
      *
      * @param id the id
      */
@@ -13,6 +13,11 @@ public class EntityNotFoundException extends RuntimeException {
         super("Could not find entity for id - " + id);
     }
 
+    /**
+     * used for instantiates a new Entity not found exception.
+     *
+     * @param name
+     */
     public EntityNotFoundException(String name) {
         super("Could not find entity for name - " + name);
     }

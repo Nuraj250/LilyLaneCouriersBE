@@ -17,32 +17,54 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * used to serve as a service component within a application
+ */
 @Service
 @AllArgsConstructor(onConstructor = @__({@Autowired}))
-public class UserService implements UserServiceImpl{
+public class UserService implements UserServiceImpl {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
 
-
+    /**
+     * used to to find a user by their username.
+     *
+     * @param  username
+     *
+     * @return
+     */
     @Override
     public Users findUserByUsername(String username) {
         return userRepository.findByUsername(username)
-                .orElse(null);    }
+                .orElse(null);
+    }
 
+    /**
+     * used for user authentication, typically during a login process.
+     *
+     * @param authRequest
+     * @return
+     */
     @Override
     public Users authenticate(AuthRequest authRequest) {
         Users existUser = this.userRepository.findByUsername(authRequest.getUsername())
-                .orElseThrow(()-> new EntityNotFoundException(authRequest.getUsername()));
-        if (passwordEncoder.matches(authRequest.getPassword(), existUser.getPassword())){
+                .orElseThrow(() -> new EntityNotFoundException(authRequest.getUsername()));
+        if (passwordEncoder.matches(authRequest.getPassword(), existUser.getPassword())) {
             return existUser;
-        }else {
+        } else {
             throw new UnAuthorizedException("Password doesn't match for user");
         }
 
     }
 
+    /**
+     * used for user registration or creating a new user account.
+     *
+     * @param userRequest
+     * @return
+     */
     @Override
     public ResponseMessage register(UserDTO userRequest) {
         Optional<Users> existingUser = userRepository.findByUsername(userRequest.getUsername());
@@ -53,9 +75,7 @@ public class UserService implements UserServiceImpl{
         user.setEmail(userRequest.getEmail());
         user.setUsername(userRequest.getUsername());
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-
-
-        Users users= userRepository.save(user);
+        Users users = userRepository.save(user);
         return new ResponseMessage(200, Alerts.saveSuccess, users);
     }
 }

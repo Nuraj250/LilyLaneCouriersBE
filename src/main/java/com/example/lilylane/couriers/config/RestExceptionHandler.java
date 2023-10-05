@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * used for handling various exceptions and returning appropriate HTTP responses with error details
+ */
 @RestControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**
-     * Handles UnAuthorizedException. Thrown when not authorized.
+     * used to handles UnAuthorizedException. Thrown when not authorized.
      *
      * @param ex the UnAuthorizedException
      * @return a {@code ResponseEntity} instance
@@ -30,7 +33,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Unprocessable entity handler string.
+     * used for unprocessable entity handler string.
      *
      * @param ex the ex
      * @return the string
@@ -42,7 +45,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Parent not found handler string.
+     * used for parent not found handler string.
      *
      * @param ex the ex
      * @return the string
@@ -54,7 +57,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Entity exists exception
+     * used for entity exists exception
      *
      * @param ex the exception
      * @return the API error instance as the response
@@ -66,7 +69,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Invalid argument handler string.
+     * used for invalid argument handler string.
      *
      * @param ex the ex
      * @return the string
@@ -78,7 +81,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Expectation failed handler string.
+     * used for expectation failed handler string.
      *
      * @param ex the ex
      * @return the string
@@ -90,7 +93,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * common method to build the final response entity
+     * used for build the final response entity
      *
      * @param apiError api error object
      * @return a {@code ResponseEntity} instance
@@ -100,7 +103,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * common method to build the final response entity
+     * used for build the final response entity
      *
      * @param status  the selected response status
      * @param message the selected response message
@@ -114,7 +117,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 
     /**
-     * Handle Exception, handle generic Exception.class
+     * used for handle Exception, handle generic Exception.class
      *
      * @param ex the Exception
      * @return a {@code ResponseEntity} instance
@@ -127,7 +130,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Handle user disabled response entity.
+     * used for handle user disabled response entity.
      *
      * @param ex the ex
      * @return the response entity

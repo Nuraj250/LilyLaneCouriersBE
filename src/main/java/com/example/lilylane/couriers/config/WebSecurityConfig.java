@@ -19,6 +19,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+/**
+ * used as a configuration for Spring Security within a Spring Boot application
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -29,6 +32,13 @@ public class WebSecurityConfig {
     private final JwtUserDetailsService userService;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * This method configures the security filter chain for HTTP requests
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
@@ -39,6 +49,12 @@ public class WebSecurityConfig {
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
+    /**
+     * This method configures and returns an instance of DaoAuthenticationProvider.
+     *
+     * @return
+     */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -47,6 +63,13 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
+    /**
+     * This method configures and returns an AuthenticationManager.
+     *
+     * @param config
+     * @return
+     * @throws Exception
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
             throws Exception {

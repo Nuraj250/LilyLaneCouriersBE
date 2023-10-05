@@ -5,6 +5,10 @@ import com.example.lilylane.couriers.dto.request.UserDTO;
 import com.example.lilylane.couriers.model.Users;
 import com.example.lilylane.couriers.util.ResponseMessage;
 
+
+/**
+ * used to define a set of user-related operations in application.
+ */
 public interface UserServiceImpl {
     Users findUserByUsername(String username);
 

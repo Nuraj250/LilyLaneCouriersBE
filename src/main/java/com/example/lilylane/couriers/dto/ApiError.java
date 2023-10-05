@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * used for representing error responses in a web application
+ */
 @Data
 @AllArgsConstructor
 public class ApiError implements Serializable {
@@ -23,14 +25,14 @@ public class ApiError implements Serializable {
     private List<ApiValidationError> validationErrors;
 
     /**
-     * Instantiates a new Api error.
+     * used to Instantiate a new Api error.
      */
     public ApiError() {
         this.timestamp = LocalDateTime.now();
     }
 
     /**
-     * Instantiates a new Api error.
+     * used to instantiate a new Api error.
      *
      * @param status the status
      */
@@ -40,7 +42,7 @@ public class ApiError implements Serializable {
     }
 
     /**
-     * Instantiates a new Api error.
+     * used to instantiate a new Api error.
      *
      * @param status  the status
      * @param message the message
@@ -51,6 +53,11 @@ public class ApiError implements Serializable {
         this.message = message;
     }
 
+    /**
+     * used to add a single ApiValidationError object to the list
+     *
+     * @param subError
+     */
     private void addValidationErrors(ApiValidationError subError) {
         if (validationErrors == null) {
             validationErrors = new ArrayList<>();
@@ -58,14 +65,33 @@ public class ApiError implements Serializable {
         validationErrors.add(subError);
     }
 
+    /**
+     * used to add a validation error with details about the object, field, rejected value, and a message
+     *
+     * @param object
+     * @param field
+     * @param rejectedValue
+     * @param message
+     */
     private void addValidationError(String object, String field, Object rejectedValue, String message) {
         addValidationErrors(new ApiValidationError(object, field, rejectedValue, message));
     }
 
+    /**
+     * used to add a validation error with details about the object and a message
+     *
+     * @param object
+     * @param message
+     */
     private void addValidationError(String object, String message) {
         addValidationErrors(new ApiValidationError(object, message));
     }
 
+    /**
+     * used to add a validation error based on a FieldError object.
+     *
+     * @param fieldError
+     */
     private void addValidationError(FieldError fieldError) {
         this.addValidationError(
                 fieldError.getObjectName(),
@@ -74,16 +100,31 @@ public class ApiError implements Serializable {
                 fieldError.getDefaultMessage());
     }
 
+    /**
+     * used to add a list of field-level validation errors.
+     *
+     * @param fieldErrors
+     */
     public void addValidationErrors(List<FieldError> fieldErrors) {
         fieldErrors.forEach(this::addValidationError);
     }
 
+    /**
+     * used to add a validation error based on an ObjectError object.
+     *
+     * @param objectError
+     */
     private void addValidationError(ObjectError objectError) {
         this.addValidationError(
                 objectError.getObjectName(),
                 objectError.getDefaultMessage());
     }
 
+    /**
+     * used to add a list of global validation errors.
+     *
+     * @param globalErrors
+     */
     public void addValidationError(List<ObjectError> globalErrors) {
         globalErrors.forEach(this::addValidationError);
     }

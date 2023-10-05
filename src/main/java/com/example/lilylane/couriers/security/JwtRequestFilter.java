@@ -17,6 +17,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * this is acustom filter for handling JWT authentication in a web application.
+ * This filter is designed to extract JWTs from the request headers, and validate them for authentication purposes.
+ */
 @Component
 @Slf4j
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -27,13 +31,20 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtTokenUtil jwtTokenUtil;
 
     /**
-     * {@inheritDoc}
-     * JWT Token is in the form Bearer token.
-     * Remove Bearer word and get only the Token
+     * this is an override of the abstract method from OncePerRequestFilter.
+     * It contains the logic for processing incoming requests.
+     *
+     * @param request
+     * @param response
+     * @param filterChain
+     * @throws ServletException
+     * @throws IOException
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response,
                                     @NonNull FilterChain filterChain) throws ServletException, IOException {
+
+        // retrieves the JWT from the "Authorization" header of the HTTP request
         final String requestTokenHeader = request.getHeader("Authorization");
 
         String username = null;
